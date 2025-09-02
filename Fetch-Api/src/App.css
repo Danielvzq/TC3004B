@@ -1,0 +1,142 @@
+/* ===== Reset y tema ===== */
+:root{
+  --bg: #0f1115;
+  --surface: #151822;
+  --text: #e8eaf1;
+  --muted: #9aa3b2;
+  --primary: #7c9cff;
+  --border: #242836;
+  --card: #171b26;
+  --shadow: rgba(0,0,0,.35);
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body{
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  background: radial-gradient(1200px 600px at 15% -10%, #1b2133 10%, transparent 60%) no-repeat,
+              linear-gradient(180deg, var(--bg), #0c0e13);
+  color: var(--text);
+}
+
+/* ===== Layout general ===== */
+#root{
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 20px 80px;
+}
+
+h1{
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 20px auto;
+  font-weight: 800;
+  letter-spacing: .3px;
+}
+
+h3{
+  margin: 28px auto 12px auto;
+  width: 100%;
+  max-width: 1100px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* ===== Form / Input ===== */
+form{
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 16px auto;
+}
+
+form input{
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  outline: none;
+  transition: box-shadow .18s ease, border-color .18s ease, transform .08s ease;
+}
+
+form input::placeholder{ color: #7c8598; }
+
+form input:focus{
+  border-color: color-mix(in oklab, var(--primary) 70%, white 0%);
+  box-shadow: 0 0 0 6px color-mix(in oklab, var(--primary) 18%, transparent 82%);
+  transform: translateY(-1px);
+}
+
+/* ===== Grid de tarjetas ===== */
+.card-grid{
+  width: 100%;
+  max-width: 1100px;
+  margin: 8px auto 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+/* ===== Tarjeta ===== */
+.card{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px -12px var(--shadow);
+  transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.card:hover{
+  transform: translateY(-3px);
+  border-color: color-mix(in oklab, var(--primary) 55%, var(--border) 45%);
+  box-shadow: 0 14px 30px -8px rgba(0,0,0,.45);
+}
+
+.card img{
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  background: #0b0e14;
+  opacity: 0;
+  animation: fade-in .25s ease forwards;
+}
+
+.card p{
+  margin: 10px 12px 12px;
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ===== Estados ===== */
+h2{ /* tu “Cargando...” */
+  margin: 8px 0 0 0;
+  font-size: 16px;
+  color: var(--muted);
+}
+
+/* ===== Utilidades ===== */
+@keyframes fade-in{
+  to { opacity: 1; }
+}
+
+/* ===== Soporte light mode (opcional) ===== */
+@media (prefers-color-scheme: light) {
+  :root{
+    --bg:#f6f7fb; --surface:#ffffff; --text:#11131a; --muted:#505766;
+    --primary:#4a68ff; --border:#e6e8ef; --card:#ffffff; --shadow:rgba(0,0,0,.1);
+  }
+  body{
+    background: radial-gradient(1200px 600px at 12% -10%, #eef1ff 10%, transparent 60%) no-repeat,
+                linear-gradient(180deg, var(--bg), #eef0f8);
+  }
+}
